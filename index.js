@@ -2,6 +2,8 @@ const express=require('express');
 const port=8000;
 const app=express();
 
+app.use("/",require("./routes/indexRoutes"));
+
 app.listen(port,function(err)
 {
     if(err)
@@ -10,4 +12,4 @@ app.listen(port,function(err)
         return;
     }
     console.log(`Server is working fine on port ${port}`);
-})
+});
