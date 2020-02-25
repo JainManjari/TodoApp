@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <script src="https://kit.fontawesome.com/a5a7a79d9a.js" crossorigin="anonymous"></script>
+    <link href= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'> 
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" > </script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > </script>   
+    <link rel="icon" type="image/x-icon" href="/images/home-icon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="heading center">ToDo App</h1>
+        <form action="/create-list" method="post" class="form-user">
+            <div class="txtarea">
+                <p>Description</p>
+                <textarea name="descript" placeholder="What do you need to do?" required class="descript"></textarea>
+            </div>
+            <div class="category-calender mb-45">
+                <div class="category">
+                    <p>Category</p>
+                    <select required class="drop-menu">
+                        <option value="">Choose a Category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="clean">Cleaning</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                </div>
+                <div class="calender">
+                    <p>Due Date</p>
+                    <input type="text" id="my_date_picker" placeholder="dd/mm/yyyy" class="drop-menu" required> 
+                </div>
+            </div>
+            <div class="btns">
+
+                <button type="submit" class="bck-color-dark" id="add-task">
+                   <div>
+                       <i class="fas fa-plus"></i>
+                    </div>
+                         Add Task
+                </button>
+                <a href="" class="bck-color-red" id="delete-task">
+                    <div>
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    Delete Task
+                </a>
+
+            </div>
+
+        </form>
+
+        <ul class="outside-list">
+
+            <li class="list">
+                <div class="checkbox">
+
+                </div>
+                <div class="task-details">
+                    <span>Why not add a task?</span>
+                    <p>25/02/2020</p>
+                </div>
+
+                <!-- <div class="category-list bck-color-work">
+                    <div style="margin-top: 8px;">Work</div>
+                </div> -->
+
+            </li>
+
+        </ul>
+    </div>
+
+<script type="text/javascript" src="/js/home.js"></script>
+</body>
+</html>

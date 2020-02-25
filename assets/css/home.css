@@ -1,0 +1,297 @@
+body
+{
+    margin: 0;
+    font-family: sans-serif;
+    color: #66666B;
+}
+
+.container
+{
+    height: auto;
+    width:50%;
+    border: 1.5px dotted gold;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: lightpink;
+}
+
+@media screen and (max-width:950px)
+{
+    .container
+    {
+        width: 65%;
+    }
+}
+
+
+@media screen and (max-width:650px)
+{
+    .container
+    {
+        width: 100%;
+    }
+}
+
+.heading
+{
+    font-family: sans-serif;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: 0.25rem;
+    word-spacing: 0.35rem;
+    font-size: 2.2rem;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.form-user
+{
+    border-top:1.8px solid #F0F0F0;
+    width: 100%;
+    height:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-user > div
+{
+    width: 100%;
+    height: 75px;
+    border-bottom: 1.8px solid #F0F0F0;;
+    padding-left: 2%;
+    box-sizing: border-box;
+}
+
+.form-user > div  p
+{
+    margin:5px 0px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.descript
+{
+    width:99%;
+    height:55%;
+    border: none;
+    resize: none;
+    background: transparent;
+    color: #F3F1F0;
+}
+
+/* .descript:focus,.drop-menu:focus,input:focus
+{
+    background-color: palevioletred;
+} */
+.form-user textarea:focus,select:focus,input:focus
+{
+    outline: none;
+}
+textarea::placeholder
+{
+    color:#F3F1F0;
+}
+
+.category-calender
+{
+    display: flex;
+    padding: 0 !important;
+}
+
+.category-calender >div
+{
+    box-sizing: border-box;
+    padding-left: 2%;
+    width: 50%;
+    height: 100%;
+}
+
+.category-calender>div:first-child
+{
+    border-right: 1.8px solid #F0F0F0;
+}
+
+.drop-menu
+{
+    cursor: pointer;
+    margin-top: 10px;
+    width: 95%;
+    background-color: transparent;
+    border: none;
+    color: #F3F1F0;
+    font-weight: bold;
+}
+.drop-menu option
+{
+    color: #66666B ;
+    font-weight: bold;
+    background-color: inherit;
+}
+
+.drop-menu::placeholder
+{
+    color:#F3F1F0;
+}
+
+.mb-45
+{
+    margin-bottom: 45px;
+}
+
+.btns
+{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 0 !important;
+    padding-bottom:25px;
+    height:auto !important;
+}
+
+.btns > a,.btns>button
+{
+    border: none;
+    color: #F3F1F0;
+    cursor: pointer;
+    height:55px;
+    width:170px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    margin-right:10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.btns > a div,.btns>button div
+{
+    margin:10px;
+}
+
+.bck-color-dark
+{
+    background-color: #444444;
+}
+
+.bck-color-red
+{
+    background-color: #EE351E;
+}
+
+.bck-color-light
+{
+    background-color: palevioletred;
+}
+.bck-color-original
+{
+    background-color: lightpink;
+}
+.bck-color-work
+{
+    background-color: #9C00AF;
+}
+.bck-color-school
+{
+    background-color: #F2A700;
+}
+.bck-color-personal
+{
+    background-color: #5E85C4;
+}
+.bck-color-other
+{
+    background-color: #DD153C;
+}
+.bck-color-clean
+{
+    background-color: #7F5D84;
+}
+#add-task:hover
+{
+    background-color: #333133;
+}
+
+#delete-task:hover
+{
+    background-color: #C5250E;
+}
+.outside-list
+{
+    height:auto;
+    margin-bottom: 30px;
+    /* border: 1px solid black; */
+    padding: 0;
+}
+
+.outside-list li
+{
+    color: #66666B;
+    height:auto;
+    list-style: none;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #F0F0F0;
+    padding-bottom: 10px;
+}
+
+.checkbox
+{
+    display: inline-block;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    /* background-position: center;
+    background-size: contain;
+    background-image:url("/images/check-solid.svg"); */
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.list p::before
+{
+    color:black;
+    content: "";
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    background-position: center;
+    background-size: contain;
+    background-image:url("/images/calendar.svg");
+}
+
+.task-details
+{
+    vertical-align: top;
+    width:70%;
+    height: 100%;
+    margin-left: 2%;
+    margin-right: 5%;
+    display: inline-block;
+}
+
+.list p
+{
+    margin: 0;
+}
+
+.category-list
+{
+    width:15%;
+    height:35px;
+    color: white;
+    display: inline-block;
+    text-transform: uppercase;
+    vertical-align:top;
+    text-align: center;
+}
