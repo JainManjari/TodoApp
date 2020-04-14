@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
     <script src="https://kit.fontawesome.com/a5a7a79d9a.js" crossorigin="anonymous"></script>
-    <link href= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'> 
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" > </script> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > </script>   
     <link rel="icon" type="image/x-icon" href="/images/home-icon.ico">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
@@ -15,7 +13,7 @@
 
     <div class="container">
         <h1 class="heading center">ToDo App</h1>
-        <form action="/create-list" method="post" class="form-user">
+        <form action="/create-list" method="post" class="form-user" id="new-list-form">
             <div class="txtarea">
                 <p>Description</p>
                 <textarea name="descript" placeholder="What do you need to do?" required class="descript"></textarea>
@@ -23,7 +21,7 @@
             <div class="category-calender mb-45">
                 <div class="category">
                     <p>Category</p>
-                    <select required class="drop-menu">
+                    <select required class="drop-menu" name="category">
                         <option value="">Choose a Category</option>
                         <option value="personal">Personal</option>
                         <option value="work">Work</option>
@@ -35,7 +33,7 @@
                 </div>
                 <div class="calender">
                     <p>Due Date</p>
-                    <input type="text" id="my_date_picker" placeholder="dd/mm/yyyy" class="drop-menu" required> 
+                    <input type="date" id="due-date"  placeholder="dd/mm/yyyy" class="drop-menu" required name="date"> 
                 </div>
             </div>
             <div class="btns">
@@ -46,37 +44,49 @@
                     </div>
                          Add Task
                 </button>
-                <a href="" class="bck-color-red" id="delete-task">
-                    <div>
-                        <i class="fas fa-trash-alt"></i>
-                    </div>
-                    Delete Task
-                </a>
 
             </div>
 
         </form>
 
-        <ul class="outside-list">
+        <form action="/delete-tasks" method="get" id="delete-lists-form">
+            
+            <ul class="outside-list">
 
-            <li class="list">
-                <div class="checkbox">
+                <% for(let i of app_list) { %>
 
-                </div>
-                <div class="task-details">
-                    <span>Why not add a task?</span>
-                    <p>25/02/2020</p>
-                </div>
+                    <li id="list-<%= i._id%>">
 
-                <!-- <div class="category-list bck-color-work">
-                    <div style="margin-top: 8px;">Work</div>
-                </div> -->
+                        <input type="checkbox" name="<%=i._id%>">
 
-            </li>
+                        <div class="task-details">
+                            <span> <%= i.description %> </span>
+                            <p> <%= i.date %> </p>
+                        </div>
 
-        </ul>
+                        <div class="category-list bck-color-<%= i.cat %>">
+                            <div style="margin-top: 8px;"> <%= i.cat %></div>
+                        </div>
+
+                    </li>
+
+                <% } %>
+
+            </ul>
+
+            <div class="btns">
+                <button type="submit" class="bck-color-red btns" id="delete-task">
+                    <div>
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    Delete Task
+                </button>
+            </div>
+    </form>
     </div>
 
 <script type="text/javascript" src="/js/home.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
