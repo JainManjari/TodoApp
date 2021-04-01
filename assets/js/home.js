@@ -38,60 +38,6 @@ var checkboxs=$(".outside-list li input");
 var taskNames=$(".task-details span");
 var taskDates=$(".task-details p");
 
-
-for( let i=0;i<checkboxs.length;i++)
-{
-    checkboxs[i].addEventListener("click",function()
-    {
-        //console.log(checkboxs[i],i,checkboxs.length);
-        if(checkboxs[i].checked)
-        {
-            //checkboxs[i].style.backgroundColor="#169F5D";
-            taskNames[i].classList.add("lineThrough");
-            taskDates[i].classList.add("lineThrough");
-        }
-        else
-        {
-            //checkboxs[i].style.backgroundColor="white";
-            taskNames[i].classList.remove("lineThrough");
-            taskDates[i].classList.remove("lineThrough");
-        }
-    })
-}
-
-function linethrough(lists)
-{
-    
-
-     for( let list of lists)
-     {
-        console.log(list);
-        let check=$(" input",list);
-        let taskName=$(" .task-details span",list);
-        let taskDate=$(" .task-details p",list);
-        checkboxs.push(check);
-        taskNames.push(taskName);
-        taskDates.push(taskDate);
-        
-        // check.on("click",function()
-        // {
-        //     console.log(check,taskName,taskDate);
-        //     if(check.checked)
-        //     {
-        //         //checkboxs[i].style.backgroundColor="#169F5D";
-        //         taskName.css("text-decoration","line-through");
-        //         taskDate.css("text-decoration","line-through");
-        //     }
-        //     else
-        //     {
-        //         //checkboxs[i].style.backgroundColor="white";
-        //         taskName.css("text-decoration","none");
-        //         taskDate.css("text-decoration","none");
-        //     }
-        // });
-    }
-}
-
 $(document).ready(function()
 {
     $("#due-date").attr("min",todayDate());
@@ -131,13 +77,15 @@ function todayDate()
                 {
                     let newlist=newDOMList(data.data.newlist);
                     $(".outside-list").append(newlist);
-                    linethrough($(".outside-list li"));
-                    console.log(checkboxs,taskNames,taskDates);
+                    checkboxs=$(".outside-list li input");
+                    taskNames=$(".task-details span");
+                    taskDates=$(".task-details p");
                     swal({
                         title: "Added Successfully!",
                         text: "The new task is added!",
                         icon: "success",
                     });
+                    checkFunc(checkboxs,taskNames,taskDates);
                 },
                 error:function(err)
                 {
@@ -211,7 +159,31 @@ function todayDate()
     deleteLists();
     
     
-
+    let checkFunc=function(checkboxs,taskNames,taskDates)
+    {
+        for( let i=0;i<checkboxs.length;i++)
+        {
+            console.log("newwww title ",i);
+            checkboxs[i].addEventListener("click",function()
+            {
+                if(checkboxs[i].checked)
+                {
+                    //checkboxs[i].style.backgroundColor="#169F5D";
+                    taskNames[i].classList.add("lineThrough");
+                    taskDates[i].classList.add("lineThrough");
+                }
+                else
+                {
+                    //checkboxs[i].style.backgroundColor="white";
+                    taskNames[i].classList.remove("lineThrough");
+                    taskDates[i].classList.remove("lineThrough");
+                }
+            })
+        }
+    }
+    
+    checkFunc(checkboxs,taskNames,taskDates);
+    
 
 
 
