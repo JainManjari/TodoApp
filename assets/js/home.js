@@ -163,7 +163,6 @@ function todayDate()
     {
         for( let i=0;i<checkboxs.length;i++)
         {
-            console.log("newwww title ",i);
             checkboxs[i].addEventListener("click",function()
             {
                 if(checkboxs[i].checked)
