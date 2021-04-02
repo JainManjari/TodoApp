@@ -53,7 +53,7 @@ module.exports.createList=async function(req,res)
 }
 
 //deleting lists
-module.exports.deleteList= async function(req,res)
+module.exports.deleteListPart= async function(req,res)
 {
     try
     {
@@ -68,14 +68,13 @@ module.exports.deleteList= async function(req,res)
             //console.log("key ",key);
             let deletedItem=await List.findByIdAndDelete(key);
             console.log(deletedItem);
-            delItems.push(deletedItem);
+            delItems.push(deletedItem.id);
         }
-        console.log(delItems);
         if(req.xhr)
         {
             console.log(delItems);
             return res.json(200,{
-                message:"Selected Lists deleted Successfully",
+                message:"Successfully deleted list items!",
                 data:{
                     deletedItems:delItems,
                 }
@@ -85,8 +84,9 @@ module.exports.deleteList= async function(req,res)
     }
     catch(err)
     {
-        console.log("error in deleting lists ",err);
+        console.log("error in deleting lists part 1 ",err);
         return;
     }
     
 }
+

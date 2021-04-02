@@ -126,27 +126,17 @@ function todayDate()
                 data:deleteListForm.serialize(),
                 success:function(data)
                 {
-                    swal({
-                        title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover these tasks!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                      })
-                      .then((willDelete) => {
-                        if (willDelete) {
-                            let delItems=data.data.deletedItems;
-                            delItems.forEach(function(item)
-                            {
-                                $(`#list-${item._id}`).remove();
-                            });
-                          swal("Your tasks has been deleted!", {
-                            icon: "success",
-                          });
-                        } else {
-                          swal("Your tasks are safe!");
-                        }
-                      });
+                    let delItems=data.data.deletedItems;
+                    // console.log("deleting ",delItems);
+                    $("#exampleModal").removeClass("show");
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+
+                    delItems.forEach(function(item)
+                    {
+                        $(`#list-${item}`).remove();
+                    });
+                    
                 },
                 error:function(err)
                 {

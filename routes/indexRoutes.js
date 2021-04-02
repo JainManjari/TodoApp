@@ -7,11 +7,10 @@ console.log("router loaded");
 //getting home ejs file from "controller" folder
 router.get("/",homeController.home);
 //creating the task list
-router.post("/create-list",homeController.createList)
+router.post("/create-list",homeController.createList);
 
 
 //deleting task from the list
-router.get("/delete-tasks",homeController.deleteList)
-
+router.get("/delete-tasks",homeController.deleteListPart);
 
 module.exports=router;

@@ -39,9 +39,10 @@ body
     font-family: sans-serif;
     line-height: 1;
     margin-bottom: 10px;
-    letter-spacing: 0.25rem;
     word-spacing: 0.35rem;
     font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: inherit;
 }
 
 .center
@@ -51,29 +52,32 @@ body
 
 .form-user
 {
-    border-top:1.8px solid #F0F0F0;
+    border-top:1.8px solid #aca4a4;
     width: 100%;
     height:auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 25px;
 }
 
 .form-user > div
 {
     width: 100%;
-    height: 75px;
-    border-bottom: 1.8px solid #F0F0F0;;
-    padding-left: 2%;
+    height: 75px !important;
+    border-bottom:1.8px solid #aca4a4;
     box-sizing: border-box;
+    margin-bottom: 25px;
 }
 
 .form-user > div  p
 {
-    margin:5px 0px;
+    margin: 5px 0px;
     font-size: 0.8rem;
-    font-weight: bold;
+    font-weight: bolder;
     text-transform: uppercase;
+    font-family: system-ui;
 }
 
 .descript
@@ -91,9 +95,13 @@ body
 {
     outline: none;
 }
-textarea::placeholder
+
+
+textarea,textarea::placeholder
 {
+    font-size: 0.85rem;
     color:#F3F1F0;
+    font-weight: 550;
 }
 
 .category-calender
@@ -112,7 +120,7 @@ textarea::placeholder
 
 .category-calender>div:first-child
 {
-    border-right: 1.8px solid #F0F0F0;
+    border-right: 1.8px solid #aca4a4;
 }
 
 .drop-menu
@@ -124,6 +132,7 @@ textarea::placeholder
     border: none;
     color: #F3F1F0;
     font-weight: bold;
+    font-size: 0.85rem;
 }
 .drop-menu option
 {
@@ -151,6 +160,8 @@ textarea::placeholder
     padding-left: 0 !important;
     padding-bottom:25px;
     height:auto !important;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .btns>button
@@ -167,6 +178,42 @@ textarea::placeholder
     /* border: 1px solid black; */
     margin-right:10px;
     font-size: 1.2rem;
+}
+
+.taskhead
+{
+    margin-top: -20px;
+    font-size: 30px;
+    color: #5d4037;
+    font-family: emoji;
+}
+
+.modal-dialog{
+    margin-top: 195px;
+    text-align: center;
+}
+
+.modal-dialog .modal-content .modal-header
+{
+    background: #8a0b0b;
+    color: #dbbcbc;
+    width: 100.1%;
+    overflow: hidden;
+}
+
+.modal-dialog .modal-content .modal-header h5{
+    display: block;
+    width: 100%;
+}
+
+.btn-danger
+{
+    background-color: #c6515c;
+}
+
+.btns>button:focus
+{
+    outline: none;
 }
 
 .btns>button div
@@ -187,6 +234,7 @@ textarea::placeholder
 .bck-color-light
 {
     background-color: palevioletred;
+    color:cornsilk;
 }
 .bck-color-original
 {
@@ -233,7 +281,7 @@ textarea::placeholder
 .outside-list
 {
     height:auto;
-    margin-bottom: 0;
+    margin-bottom: 35px;
     /* border: 1px solid black; */
     padding: 0;
 }
@@ -245,7 +293,9 @@ textarea::placeholder
     list-style: none;
     margin-bottom: 20px;
     border-bottom: 2px dashed #F0F0F0;
-    padding-bottom: 10px;
+    padding-bottom: 60px;
+    font-size: 0.92rem;
+}
 }
 
 input[type="checkbox"]
@@ -314,7 +364,7 @@ input[type="checkbox"]:checked
 
 .category-list
 {
-    font-size:0.8rem;
+    font-size: 0.75rem;
     font-weight: bold;
     width:15%;
     height:auto;

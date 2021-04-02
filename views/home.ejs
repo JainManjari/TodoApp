@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/a5a7a79d9a.js" crossorigin="anonymous"></script>
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" > </script> 
     <link rel="icon" type="image/x-icon" href="/images/home-icon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body>
@@ -14,7 +15,7 @@
     <div class="container">
         <h1 class="heading center">ToDo App</h1>
         <form action="/create-list" method="post" class="form-user" id="new-list-form">
-            <div class="txtarea">
+            <div class="txtarea" style="margin-bottom: 0px;">
                 <p>Description</p>
                 <textarea name="descript" placeholder="What do you need to do?" required class="descript"></textarea>
             </div>
@@ -36,7 +37,7 @@
                     <input type="date" id="due-date"  placeholder="dd/mm/yyyy" class="drop-menu" required name="date"> 
                 </div>
             </div>
-            <div class="btns">
+            <div class="btns" style="padding-bottom: 90px;border-color: #b66a6a;padding-top: 15px;">
 
                 <button type="submit" class="bck-color-dark" id="add-task">
                    <div>
@@ -51,6 +52,10 @@
 
         <form action="/delete-tasks" method="get" id="delete-lists-form">
             
+            <h1 class="heading center taskhead">
+                Pending Tasks
+            </h1>
+
             <ul class="outside-list">
 
                 <% for(let i of app_list) { %>
@@ -75,16 +80,36 @@
             </ul>
 
             <div class="btns">
-                <button type="submit" class="bck-color-red btns" id="delete-task">
+                <button type="button" class="bck-color-red btns" id="delete-task" data-toggle="modal" data-target="#exampleModal">
                     <div>
                         <i class="fas fa-trash-alt"></i>
                     </div>
                     Delete Task
                 </button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header center">
+                          <h5 class="modal-title center" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                        </div>
+                        <div class="modal-body">
+                          Once deleted, tasks can't be recovered!
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
     </form>
     </div>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/js/home.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
