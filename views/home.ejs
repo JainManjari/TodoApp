@@ -50,61 +50,66 @@
 
         </form>
 
-        <form action="/delete-tasks" method="get" id="delete-lists-form">
-            
-            <h1 class="heading center taskhead">
-                Pending Tasks
-            </h1>
 
-            <ul class="outside-list">
 
-                <% for(let i of app_list) { %>
+        <% if (app_list.length>0) {%>
+            <form action="/delete-tasks" method="get" id="delete-lists-form">
+                
+                    <h1 class="heading center taskhead">
+                        Pending Tasks
+                    </h1>
+        
 
-                    <li id="list-<%= i._id%>">
+                <ul class="outside-list">
 
-                        <input type="checkbox" name="<%=i._id%>">
+                    <% for(let i of app_list) { %>
 
-                        <div class="task-details">
-                            <span> <%= i.description %> </span>
-                            <p> <%= i.date %> </p>
+                        <li id="list-<%= i._id%>">
+
+                            <input type="checkbox" name="<%=i._id%>">
+
+                            <div class="task-details">
+                                <span> <%= i.description %> </span>
+                                <p> <%= i.date %> </p>
+                            </div>
+
+                            <div class="category-list bck-color-<%= i.cat %>">
+                                <div style="margin-top: 8px;"> <%= i.cat %></div>
+                            </div>
+
+                        </li>
+
+                    <% } %>
+
+                </ul>
+
+                <div class="btns">
+                    <button type="button" class="bck-color-red btns" id="delete-task" data-toggle="modal" data-target="#exampleModal">
+                        <div>
+                            <i class="fas fa-trash-alt"></i>
                         </div>
+                        Delete Task
+                    </button>
 
-                        <div class="category-list bck-color-<%= i.cat %>">
-                            <div style="margin-top: 8px;"> <%= i.cat %></div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header center">
+                            <h5 class="modal-title center" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                            </div>
+                            <div class="modal-body">
+                            Once deleted, tasks can't be recovered!
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
                         </div>
-
-                    </li>
-
-                <% } %>
-
-            </ul>
-
-            <div class="btns">
-                <button type="button" class="bck-color-red btns" id="delete-task" data-toggle="modal" data-target="#exampleModal">
-                    <div>
-                        <i class="fas fa-trash-alt"></i>
-                    </div>
-                    Delete Task
-                </button>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header center">
-                          <h5 class="modal-title center" id="exampleModalLabel">Are you sure you want to delete?</h5>
                         </div>
-                        <div class="modal-body">
-                          Once deleted, tasks can't be recovered!
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-danger">Delete</button>
-                        </div>
-                      </div>
                     </div>
                 </div>
-            </div>
-    </form>
+            </form>
+        <% } %>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -76,6 +76,13 @@ function todayDate()
                 success:function(data)
                 {
                     let newlist=newDOMList(data.data.newlist);
+                    if(checkboxs.length==0)
+                    {
+                        console.log("adding for first time");
+                        let newForm=newDOMForm();
+                        $("body .container").append(newForm);
+                    }
+
                     $(".outside-list").append(newlist);
                     checkboxs=$(".outside-list li input");
                     taskNames=$(".task-details span");
@@ -86,6 +93,7 @@ function todayDate()
                         icon: "success",
                     });
                     checkFunc(checkboxs,taskNames,taskDates);
+                   
                 },
                 error:function(err)
                 {
@@ -114,6 +122,51 @@ function todayDate()
     </li>`)
     }
 
+    let newDOMForm=function()
+    {
+        return $(`
+        
+        <form action="/delete-tasks" method="get" id="delete-lists-form">
+                
+        <h1 class="heading center taskhead">
+            Pending Tasks
+        </h1>
+
+
+    <ul class="outside-list">
+
+    </ul>
+
+    <div class="btns">
+        <button type="button" class="bck-color-red btns" id="delete-task" data-toggle="modal" data-target="#exampleModal">
+            <div>
+                <i class="fas fa-trash-alt"></i>
+            </div>
+            Delete Task
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header center">
+                <h5 class="modal-title center" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                </div>
+                <div class="modal-body">
+                Once deleted, tasks can't be recovered!
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+        `);
+    }
+
     let deleteLists=function()
     {
         let deleteListForm=$("#delete-lists-form");
@@ -127,16 +180,23 @@ function todayDate()
                 success:function(data)
                 {
                     let delItems=data.data.deletedItems;
-                    // console.log("deleting ",delItems);
+                    console.log("deleting ",delItems.length);
                     $("#exampleModal").removeClass("show");
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
 
-                    delItems.forEach(function(item)
+                    if(delItems.length==1)
                     {
-                        $(`#list-${item}`).remove();
-                    });
-                    
+                        console.log("no form now");
+                        $("#delete-lists-form").remove();
+                    }
+                    else
+                    {
+                        delItems.forEach(function(item)
+                        {
+                            $(`#list-${item}`).remove();
+                        });
+                    }
                 },
                 error:function(err)
                 {
