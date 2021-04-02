@@ -184,18 +184,15 @@ function todayDate()
                     $("#exampleModal").removeClass("show");
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
-
-                    if(delItems.length==1)
+                    delItems.forEach(function(item)
+                    {
+                        $(`#list-${item}`).remove();
+                    });
+                    checkboxs=$(".outside-list li input");
+                    if(checkboxs.length==0)
                     {
                         console.log("no form now");
                         $("#delete-lists-form").remove();
-                    }
-                    else
-                    {
-                        delItems.forEach(function(item)
-                        {
-                            $(`#list-${item}`).remove();
-                        });
                     }
                 },
                 error:function(err)
